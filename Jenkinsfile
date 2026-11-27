@@ -43,7 +43,7 @@ pipeline {
             when {
                 // our application shoould deploy to prod only if app is going through tag
                 //vx.x.x ==> v1.2.3
-                tag pattern: "v\\d{1,2}\\.\\d{1,2}\\.\\d{1,2}\\", comparator: "REGEXP"
+                tag pattern: "v\\d{1,2}\\.\\d{1,2}\\.\\d{1,2}", comparator: "REGEXP"
             }
             steps {
                 echo "Building the application"
