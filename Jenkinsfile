@@ -1,16 +1,20 @@
 pipeline {
     agent any
-    environment {
-        Deploy_To = "Prod"
-    }
     stages {
+        stage ("Build Stage") {
+            steps {
+                echo "Building the application"
+            }
+        }
         stage ("When Stage") {
-                when {
-                    environment name: "Deploy_To", value: "Prod"
+            when {
+                expression {
+                    BRANCH_NAME ==~ /(production|staging)/
                 }
-                steps {
-                    echo "Deploy to When Stage"
-                }
+            }
+            steps {
+                echo "Deploying when Stage to Prod"
+            }
         }
     }
 }
